@@ -77,7 +77,6 @@
             this.label2.Size = new System.Drawing.Size(185, 39);
             this.label2.TabIndex = 1;
             this.label2.Text = "Fruit Name";
-            this.label2.Click += new System.EventHandler(this.label1_Click);
             // 
             // textFruitName
             // 
@@ -159,7 +158,6 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "trainForm";
             this.Text = "Training";
-            this.Load += new System.EventHandler(this.trainForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

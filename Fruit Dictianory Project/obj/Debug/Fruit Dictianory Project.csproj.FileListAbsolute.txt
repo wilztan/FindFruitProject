@@ -10,9 +10,6 @@ c:\users\rico majesty\documents\visual studio 2015\Projects\Fruit Dictianory Pro
 c:\users\rico majesty\documents\visual studio 2015\Projects\Fruit Dictianory Project\Fruit Dictianory Project\obj\Debug\Fruit Dictianory Project.exe
 c:\users\rico majesty\documents\visual studio 2015\Projects\Fruit Dictianory Project\Fruit Dictianory Project\obj\Debug\Fruit Dictianory Project.pdb
 c:\users\rico majesty\documents\visual studio 2015\Projects\Fruit Dictianory Project\Fruit Dictianory Project\obj\Debug\Fruit_Dictianory_Project.mainForm.resources
-C:\Users\andre\Desktop\world domination\AI\ANN\projects\Fruit Dictianory Project\Fruit Dictianory Project\bin\Debug\Fruit Dictianory Project.exe.config
-C:\Users\andre\Desktop\world domination\AI\ANN\projects\Fruit Dictianory Project\Fruit Dictianory Project\bin\Debug\Fruit Dictianory Project.exe
-C:\Users\andre\Desktop\world domination\AI\ANN\projects\Fruit Dictianory Project\Fruit Dictianory Project\bin\Debug\Fruit Dictianory Project.pdb
 C:\Users\andre\Desktop\world domination\AI\ANN\projects\Fruit Dictianory Project\Fruit Dictianory Project\obj\Debug\Fruit Dictianory Project.csprojResolveAssemblyReference.cache
 C:\Users\andre\Desktop\world domination\AI\ANN\projects\Fruit Dictianory Project\Fruit Dictianory Project\obj\Debug\Fruit_Dictianory_Project.findForm.resources
 C:\Users\andre\Desktop\world domination\AI\ANN\projects\Fruit Dictianory Project\Fruit Dictianory Project\obj\Debug\Fruit_Dictianory_Project.mainForm.resources
@@ -21,9 +18,10 @@ C:\Users\andre\Desktop\world domination\AI\ANN\projects\Fruit Dictianory Project
 C:\Users\andre\Desktop\world domination\AI\ANN\projects\Fruit Dictianory Project\Fruit Dictianory Project\obj\Debug\Fruit_Dictianory_Project.trainForm.resources
 C:\Users\andre\Desktop\world domination\AI\ANN\projects\Fruit Dictianory Project\Fruit Dictianory Project\obj\Debug\Fruit Dictianory Project.csproj.GenerateResource.cache
 C:\Users\andre\Desktop\world domination\AI\ANN\projects\Fruit Dictianory Project\Fruit Dictianory Project\obj\Debug\Fruit Dictianory Project.csproj.CoreCompileInputs.cache
-C:\Users\andre\Desktop\world domination\AI\ANN\projects\Fruit Dictianory Project\Fruit Dictianory Project\obj\Debug\Fruit Dictianory Project.exe
-C:\Users\andre\Desktop\world domination\AI\ANN\projects\Fruit Dictianory Project\Fruit Dictianory Project\obj\Debug\Fruit Dictianory Project.pdb
 C:\Users\andre\Desktop\world domination\AI\ANN\projects\Fruit Dictianory Project\Fruit Dictianory Project\bin\Debug\Accord.dll.config
+C:\Users\andre\Desktop\world domination\AI\ANN\projects\Fruit Dictianory Project\Fruit Dictianory Project\bin\Debug\Fruit Dictianory Project.exe.config
+C:\Users\andre\Desktop\world domination\AI\ANN\projects\Fruit Dictianory Project\Fruit Dictianory Project\bin\Debug\Fruit Dictianory Project.exe
+C:\Users\andre\Desktop\world domination\AI\ANN\projects\Fruit Dictianory Project\Fruit Dictianory Project\bin\Debug\Fruit Dictianory Project.pdb
 C:\Users\andre\Desktop\world domination\AI\ANN\projects\Fruit Dictianory Project\Fruit Dictianory Project\bin\Debug\Accord.dll
 C:\Users\andre\Desktop\world domination\AI\ANN\projects\Fruit Dictianory Project\Fruit Dictianory Project\bin\Debug\Accord.Genetic.dll
 C:\Users\andre\Desktop\world domination\AI\ANN\projects\Fruit Dictianory Project\Fruit Dictianory Project\bin\Debug\Accord.Imaging.dll
@@ -39,3 +37,5 @@ C:\Users\andre\Desktop\world domination\AI\ANN\projects\Fruit Dictianory Project
 C:\Users\andre\Desktop\world domination\AI\ANN\projects\Fruit Dictianory Project\Fruit Dictianory Project\bin\Debug\Accord.Neuro.xml
 C:\Users\andre\Desktop\world domination\AI\ANN\projects\Fruit Dictianory Project\Fruit Dictianory Project\bin\Debug\Accord.Statistics.xml
 C:\Users\andre\Desktop\world domination\AI\ANN\projects\Fruit Dictianory Project\Fruit Dictianory Project\obj\Debug\Fruit Dictianory Project.csproj.CopyComplete
+C:\Users\andre\Desktop\world domination\AI\ANN\projects\Fruit Dictianory Project\Fruit Dictianory Project\obj\Debug\Fruit Dictianory Project.exe
+C:\Users\andre\Desktop\world domination\AI\ANN\projects\Fruit Dictianory Project\Fruit Dictianory Project\obj\Debug\Fruit Dictianory Project.pdb

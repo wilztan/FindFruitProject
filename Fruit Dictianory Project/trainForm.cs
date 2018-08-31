@@ -16,6 +16,7 @@ using Accord.Imaging;
 using Accord.Imaging.Converters;
 using Accord.Imaging.Filters;
 using System.IO;
+using Accord.Statistics.Analysis;
 
 namespace Fruit_Dictianory_Project
 {
@@ -32,6 +33,7 @@ namespace Fruit_Dictianory_Project
          * Image Files
          */
         List<double[]> inputImgArray = new List<double[]>();
+        List<string> inputLabel = new List<string>();
         List<double[]> outputImgArray = new List<double[]>();
 
         /*
@@ -40,10 +42,12 @@ namespace Fruit_Dictianory_Project
         ActivationNetwork an;
         BackPropagationLearning bpn;
         DistanceNetwork dn;
+        PrincipalComponentAnalysis pca;
         SOMLearning som;
         int inputCount = 25 * 25;
         int outputCount = 0; //changeable
         int totalData;
+        
 
         /*
          * For General Purpose of Training
@@ -59,16 +63,6 @@ namespace Fruit_Dictianory_Project
             InitializeComponent();
             btnDone.Enabled = false;
             lvTrain.LargeImageList = imgList;
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void trainForm_Load(object sender, EventArgs e)
-        {
-
         }
 
         /***
@@ -155,8 +149,9 @@ namespace Fruit_Dictianory_Project
                 {
                     var img = new Bitmap(files);
                     double[] imageAsArray;
-                    imageToArray.Convert(Preprocess(img), out imageAsArray);
+                    imageToArray.Convert(mainForm.Preprocess(img), out imageAsArray);
                     var output = new double[totalData];
+                    inputLabel.Add(label);
                     Array.Clear(output, 0, totalData);
                     output[counter] = 1;
                     inputImgArray.Add(imageAsArray);
@@ -196,7 +191,7 @@ namespace Fruit_Dictianory_Project
                 }
                 if (i % 10 == 0)
                 {
-                    Console.WriteLine($"Report error {i} : {error}");
+                    Console.WriteLine($"Report error BPN {i} : {error}");
                 }
             }
             an.Save(savedANNetwork);
@@ -204,44 +199,32 @@ namespace Fruit_Dictianory_Project
 
         void Clustering()
         {
-            dn = new DistanceNetwork(inputCount, closestSquareNumber(totalData));
+            pca = new PrincipalComponentAnalysis();
+            //pca
+            pca.Learn(inputImgArray.ToArray());
+            var pcaRes = pca.Transform(inputImgArray.ToArray());
+
+
+            dn = new DistanceNetwork(pcaRes[0].Length, mainForm.closestSquareNumber(totalData));
             som = new SOMLearning(dn);
             Console.WriteLine("Learning");
 
             for( var i = 0; i < maxEpoch; i++)
             {
-                var error = som.RunEpoch(inputImgArray.ToArray());
+                var error = som.RunEpoch(pcaRes);
                 if(error< errorGoal)
                 {
                     break;
                 }
                 if (i % 10 == 0)
                 {
-                    Console.WriteLine($"Report error {i} : {error}");
+                    Console.WriteLine($"Report Cluster error {i} : {error}");
                 }
             }
             dn.Save(savedDNNetwork);
         }
 
-        int closestSquareNumber(int n)
-        {
-            return (int) Math.Pow(Math.Round(Math.Sqrt(n)), 2);
+        
 
-        }
-
-        Bitmap Preprocess(Bitmap img)
-        {
-            Bitmap clone = (Bitmap)img.Clone();
-            //Grayscale
-            clone = Grayscale.CommonAlgorithms.BT709.Apply(clone);
-            //Treshold
-            clone = (new Threshold(127)).Apply(clone);
-            //Edge Detector
-            clone = (new HomogenityEdgeDetector()).Apply(clone);
-            //resize
-            clone = new ResizeBilinear(25, 25).Apply(clone);
-            return clone;
-
-        }
     }
 }

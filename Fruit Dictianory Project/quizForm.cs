@@ -28,19 +28,23 @@ namespace Fruit_Dictianory_Project
             NewQuiz();
         }
 
+        //randowmizer for new quiz
         int Randomizer(int min, int max)
         {
             Random rdm = new Random();
             return rdm.Next(min, max);
         }
 
+        //start new quizz
         void NewQuiz()
         {
-            Console.WriteLine($"Result Name: {resultName.Count()}");
-            lblResult.Text = resultName[Randomizer(0, resultName.Count() - 1)] ;
+            var value = resultName.Count();
+            var randomed = Randomizer(0, value);
+            lblResult.Text = resultName[randomed] ;
             lblScoreRes.Text = $"Your Result : {score}";
         }
 
+        //get result to randomize
         void getResult()
         {
             
@@ -70,6 +74,7 @@ namespace Fruit_Dictianory_Project
             if(ofd.ShowDialog() == DialogResult.OK)
             {
                 Bitmap img = new Bitmap(ofd.FileName);
+                //img = mainForm.Preprocess(img);
                 pictBoxResult.Image = img;
             }
         }
@@ -77,7 +82,7 @@ namespace Fruit_Dictianory_Project
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             Bitmap img = new Bitmap(pictBoxResult.Image);
-            img = Preprocess(img);
+            img = mainForm.Preprocess(img);
             ImageToArray imageToArray = new ImageToArray();
             double[] input;
             imageToArray.Convert(img, out input);
@@ -102,21 +107,6 @@ namespace Fruit_Dictianory_Project
             }
             
         }
-
-
-        Bitmap Preprocess(Bitmap img)
-        {
-            Bitmap clone = (Bitmap)img.Clone();
-            //Grayscale
-            clone = Grayscale.CommonAlgorithms.BT709.Apply(clone);
-            //Treshold
-            clone = (new Threshold(127)).Apply(clone);
-            //Edge Detector
-            clone = (new HomogenityEdgeDetector()).Apply(clone);
-            //resize
-            clone = new ResizeBilinear(25, 25).Apply(clone);
-            return clone;
-
-        }
+        
     }
 }

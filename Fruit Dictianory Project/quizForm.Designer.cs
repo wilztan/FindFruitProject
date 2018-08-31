@@ -67,7 +67,7 @@
             this.pictBoxResult.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pictBoxResult.Name = "pictBoxResult";
             this.pictBoxResult.Size = new System.Drawing.Size(194, 212);
-            this.pictBoxResult.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictBoxResult.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictBoxResult.TabIndex = 1;
             this.pictBoxResult.TabStop = false;
             // 

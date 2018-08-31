@@ -9,7 +9,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Accord;
+using Accord.Imaging;
 using Accord.Neuro.Learning;
+using Accord.Imaging.Filters;
+using Accord.Statistics.Analysis;
 
 namespace Fruit_Dictianory_Project
 {
@@ -17,6 +20,7 @@ namespace Fruit_Dictianory_Project
     {
         ActivationNetwork an;
         DistanceNetwork dn;
+        PrincipalComponentAnalysis pca;
         static string savedANNetwork = "ActivationNetwork.bin";
         static string savedDNNetwork = "DistanceNetwork.bin";
 
@@ -29,6 +33,7 @@ namespace Fruit_Dictianory_Project
         {
             Application.Exit();
         }
+
         private void btnTrain_Click(object sender, EventArgs e)
         {
             var formTrain = new trainForm();
@@ -40,9 +45,7 @@ namespace Fruit_Dictianory_Project
 
         }
         
-        /*
-         * Going to Quiz Form
-         */
+        //Going to Quiz Form
         private void btnQuiz_Click(object sender, EventArgs e)
         {
             //validate existence of files
@@ -59,9 +62,8 @@ namespace Fruit_Dictianory_Project
                 MessageBox.Show($"{savedANNetwork} not found");
             }
         }
-        /*
-         * Going to Find Form
-         */
+        
+        //Going to Find Form
         private void btnFind_Click(object sender, EventArgs e)
         {
             //validate existence of files
@@ -77,6 +79,71 @@ namespace Fruit_Dictianory_Project
             {
                 MessageBox.Show($"{savedDNNetwork} not Found");
             }
+        }
+
+
+        /*
+         * General Function for usage in any form
+         */
+         //Preprocess
+        public static Bitmap Preprocess(Bitmap img)
+        {
+            Bitmap clone = (Bitmap)img.Clone();
+            //Grayscale
+            clone = Grayscale.CommonAlgorithms.BT709.Apply(clone);
+            //Treshold
+            clone = (new Threshold(127)).Apply(clone);
+            //Edge Detector
+            clone = (new HomogenityEdgeDetector()).Apply(clone);
+            //noise Reduction
+            clone = preprocessNoise(clone);
+            //resize
+            clone = new ResizeBilinear(25, 25).Apply(clone);
+            return clone;
+
+        }
+
+        //Noise Reduction
+        public static Bitmap preprocessNoise(Bitmap img)
+        {
+            var clone = (Bitmap)img.Clone();
+            int xMin = clone.Width, xMax = 0;
+            int yMin = clone.Height, yMax = 0;
+            for (int i = 0; i < clone.Height; i++)
+            {
+                for (int j = 0; j < clone.Width; j++)
+                {
+                    if (clone.GetPixel(j, i).R > 127)
+                    {
+                        xMin = Math.Min(xMin, j);
+                        xMax = Math.Max(xMax, j);
+                        yMin = Math.Min(yMin, i);
+                        yMax = Math.Max(yMax, i);
+                    }
+                }
+            }
+            if (xMin == clone.Width) xMin = 0;
+            if (xMax == 0) xMax = clone.Width;
+            if (yMin == clone.Height) yMin = 0;
+            if (yMax == 0) yMax = clone.Width;
+
+            clone = (Bitmap)clone.Clone(
+                new Rectangle(
+                    xMin, 
+                    yMin, 
+                    xMax - xMin, 
+                    yMax - yMin
+                    ),
+                clone.PixelFormat
+                );
+
+            return clone;
+        }
+        //closestMeanSquare
+        public static int closestSquareNumber(int n)
+        {
+            return (int)Math.Pow(Math.Round(Math.Sqrt(n)), 2);
+
         }
     }
 }
